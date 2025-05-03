@@ -1,9 +1,6 @@
-This is the ReadMe file.
 # Applied Machine Learning
 
 # ✅ 3-Day Applied Machine Learning Starter Checklist
-
----
 
 ## 📅 **Day 1: Setup + Data Exploration**
 
@@ -22,8 +19,6 @@ This is the ReadMe file.
     - [x]  Countplot (e.g., Survival)
     - [x]  Boxplot (e.g., Age vs Pclass)
 - [ ]  Summarize key insights in 3–5 bullet points.
-
----
 
 ## 📅 **Day 2: Build Basic ML Pipeline**
 
@@ -44,8 +39,6 @@ This is the ReadMe file.
 - [x]  Pre-approval Report for SSIP
 - [x]  Annexure-1 for SSIP
 - [x]  Budget for FarmFlow
-
----
 
 ## 📅 **Day 3: Feature Engineering + Model Improvement**
 
