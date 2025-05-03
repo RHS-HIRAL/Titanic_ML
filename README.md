@@ -1,51 +1,53 @@
-# Applied Machine Learning
-
 # ✅ 3-Day Applied Machine Learning Starter Checklist
 
 ## 📅 **Day 1: Setup + Data Exploration**
 
 ### **28th April 2025**
 
-- [x]  Install/verify Python, Jupyter Notebook, Pandas, Matplotlib, Seaborn, Scikit-Learn.
-- [x]  Download Titanic Dataset from Kaggle.
-- [x]  Load dataset into a Pandas DataFrame.
-- [x]  Check:
-    - [x]  `.head()`
-    - [x]  `.info()`
-    - [x]  `.describe()`
-- [x]  Identify missing values.
-- [x]  Plot:
-    - [x]  Histogram (e.g., Age, Fare)
-    - [x]  Countplot (e.g., Survival)
-    - [x]  Boxplot (e.g., Age vs Pclass)
-- [ ]  Summarize key insights in 3–5 bullet points.
+- [ ]  Install/verify Python, Jupyter Notebook, Pandas, Matplotlib, Seaborn, Scikit-Learn.
+- [ ]  Download Titanic Dataset from Kaggle.
+- [ ]  Load dataset into a Pandas DataFrame.
+- [ ]  Check:
+    - [ ]  `.head()`
+    - [ ]  `.info()`
+    - [ ]  `.describe()`
+- [ ]  Identify missing values.
+- [ ]  Plot:
+    - [ ]  Histogram (e.g., Age, Fare)
+    - [ ]  Countplot (e.g., Survival)
+    - [ ]  Boxplot (e.g., Age vs Pclass)
 
 ## 📅 **Day 2: Build Basic ML Pipeline**
 
 ### **29th April 2025**
 
-- [x]  Handle missing data (e.g., `SimpleImputer`).
-- [x]  Encode categorical variables (`LabelEncoding`/`OneHotEncoding`).
-- [x]  Remove the columns which have all the data values as 0.
-- [x]  Perform Train-Test split.
-- [x]  Train a Logistic Regression model.
-- [x]  Predict on test data.
-- [x]  Evaluate:
-    - [x]  Confusion Matrix
-    - [x]  Accuracy Score
-- [x]  Save your notebook (`Day2_Titanic_Model.ipynb`).
+- [ ]  Handle missing data (e.g., `SimpleImputer`).
+- [ ]  Encode categorical variables (`LabelEncoding`/`OneHotEncoding`).
+- [ ]  Remove the columns which have all the data values as 0.
+- [ ]  Perform Train-Test split.
+- [ ]  Train a Logistic Regression model.
+- [ ]  Predict on test data.
+- [ ]  Evaluate:
+    - [ ]  Confusion Matrix
+    - [ ]  Accuracy Score
+- [ ]  Save your notebook (`Day2_Titanic_Model.ipynb`).
 
-- [x]  apna(DMP) Problem Statement Selection
-- [x]  Pre-approval Report for SSIP
-- [x]  Annexure-1 for SSIP
-- [x]  Budget for FarmFlow
+- [ ]  apna(DMP) Problem Statement Selection
+- [ ]  Pre-approval Report for SSIP
+- [ ]  Annexure-1 for SSIP
+- [ ]  Budget for FarmFlow
 
 ## 📅 **Day 3: Feature Engineering + Model Improvement**
 
 ### **30th April 2025**
 
-- [x]  Create new features (e.g., Title extracted from Name).
-- [x]  Train a Random Forest Classifier.
-- [x]  Perform Cross-Validation (`cross_val_score`).
-- [x]  Compare results: Logistic Regression vs Random Forest.
-- [x]  Save improved notebook (`Day3_Titanic_Improved.ipynb`).
+- [ ]  Create new features (e.g., Title extracted from Name).
+- [ ]  Train a Random Forest Classifier.
+- [ ]  Perform Cross-Validation (`cross_val_score`).
+- [ ]  Compare results: Logistic Regression vs Random Forest.
+- [ ]  Save improved notebook (`Day3_Titanic_Improved.ipynb`).
+
+# 🏁 Bonus:
+
+- [ ]  Create a simple **README.md** (title, dataset used, brief steps).
+- [ ]  Push your project to GitHub.
