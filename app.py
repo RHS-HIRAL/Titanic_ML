@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -7,17 +8,19 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
-# Cache the dataset loading to speed up reruns
+# Function to load data with dynamic path
 @st.cache_data()
 def load_data():
-    df = pd.read_csv("data/titanic.csv")
-    return df
+    # Build path relative to this script
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, "data", "titanic.csv")
+    return pd.read_csv(csv_path)
 
-# Cache the model training; trains once and reuses
+# Function to train model on-the-fly and cache it
 @st.cache_resource()
 def train_model(df):
     # Feature and target selection
-    X = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']].copy()
+    X = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']]
     y = df['Survived']
 
     # Numeric pipeline: median imputation
@@ -47,28 +50,28 @@ def train_model(df):
     model.fit(X, y)
     return model
 
-# Application title
+# Streamlit App
 st.title("Titanic Survival Prediction")
 
-# Load data and show preview
+# Load data and preview
 df = load_data()
 st.write("### Dataset Preview", df.head())
 
-# Train or load cached model
-model = train_model(df)
+# Train model once and cache
+titanic_model = train_model(df)
 
-# Sidebar for user inputs
+# Sidebar inputs
 st.sidebar.header("Passenger Features")
-age = st.sidebar.slider("Age", 0, 100, 30)
-pclass = st.sidebar.selectbox("Pclass", sorted(df["Pclass"].unique()))
-sex = st.sidebar.selectbox("Sex", df["Sex"].unique())
+age = st.sidebar.slider("Age", min_value=0, max_value=100, value=30)
+pclass = st.sidebar.selectbox("Pclass", sorted(df['Pclass'].unique()))
+sex = st.sidebar.selectbox("Sex", df['Sex'].unique())
 sibsp = st.sidebar.number_input("Siblings/Spouses Aboard", min_value=0, max_value=8, value=0)
 parch = st.sidebar.number_input("Parents/Children Aboard", min_value=0, max_value=8, value=0)
-fare = st.sidebar.slider("Fare", 0.0, float(df["Fare"].max()), float(df["Fare"].median()))
-embarked = st.sidebar.selectbox("Embarked", df["Embarked"].dropna().unique())
+fare = st.sidebar.slider("Fare", min_value=0.0, max_value=float(df['Fare'].max()), value=float(df['Fare'].median()))
+embarked = st.sidebar.selectbox("Embarked", df['Embarked'].dropna().unique())
 
-# Create a new DataFrame for prediction
-X_new = pd.DataFrame([{
+# Prepare input DataFrame for prediction
+input_df = pd.DataFrame([{
     'Pclass': pclass,
     'Sex': sex,
     'Age': age,
@@ -79,12 +82,8 @@ X_new = pd.DataFrame([{
 }])
 
 # Predict and display results
-prediction = model.predict(X_new)[0]
-probability = model.predict_proba(X_new)[0][1]
+prediction = titanic_model.predict(input_df)[0]
+probability = titanic_model.predict_proba(input_df)[0][1]
 
 st.write(f"**Predicted Survival:** {'Yes' if prediction else 'No'}")
 st.write(f"**Probability of Survival:** {probability:.2%}")
-
-# Show confusion matrix
-st.write("### Confusion Matrix")
-st.write(pd.crosstab(df['Survived'], model.predict(df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']]), rownames=['Actual'], colnames=['Predicted']))
